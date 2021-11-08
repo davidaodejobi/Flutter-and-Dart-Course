@@ -1,4 +1,7 @@
+import 'package:brainny/quiz.dart';
 import 'package:flutter/material.dart';
+
+import 'result.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,36 +14,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Brainny',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+        appBarTheme: const AppBarTheme().copyWith(
+          color: Colors.blue.shade900,
+        ),
+        scaffoldBackgroundColor: Colors.blue.shade900,
+        primarySwatch: Colors.blueGrey,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Brainny'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -48,68 +36,130 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  final _questions = [
+    {
+      'questionText': '1. Which actor played James Bond in 1990?',
+      'answers': [
+        {'text': 'Will Smith', 'score': 0},
+        {'text': 'Pierce Brosnan', 'score': 10},
+        {'text': 'Elijah Wood', 'score': 0},
+        {'text': 'Tony Robbins', 'score': 0}
+      ],
+      'hint': 'Don\'t tell me you\'ve never heard of something 007 :) .',
+    },
+    {
+      'questionText':
+          '2. What is the real name of Oprah Winfrey, a famous American TV host?',
+      'answers': [
+        {'text': 'Orwin', 'score': 0},
+        {'text': 'Winfery', 'score': 0},
+        {'text': 'Orpah', 'score': 10},
+        {'text': 'None of the above', 'score': 0}
+      ],
+      'hint': 'No luck on this one(lol), it looks simple',
+    },
+    {
+      'questionText': '3. What is the national sport in Japan?',
+      'answers': [
+        {'text': 'Wrestling', 'score': 0},
+        {'text': 'Dancing', 'score': 0},
+        {'text': 'Shooting Arrows', 'score': 0},
+        {'text': 'Sumo Wrestling', 'score': 10}
+      ],
+      'hint': 'If you don\'t get that, forget about it(Lmao)',
+    },
+    {
+      'questionText': '3. Who introduced football in the world?',
+      'answers': [
+        {'text': 'France', 'score': 0},
+        {'text': 'China', 'score': 0},
+        {'text': 'England', 'score': 10},
+        {'text': 'Tokyo', 'score': 10}
+      ],
+      'hint': 'Well, It is definetly one of them',
+    },
+    {
+      'questionText':
+          '5. Which ball is worth the most points in English snooker?',
+      'answers': [
+        {'text': 'White ball', 'score': 0},
+        {'text': 'Green ball', 'score': 0},
+        {'text': 'Yellow ball', 'score': 0},
+        {'text': 'Black ball', 'score': 10}
+      ],
+      'hint': 'If it\'s not white, then it should be ...',
+    },
+    {
+      'questionText': '6. In which country were the first Olympic Games held?',
+      'answers': [
+        {'text': 'England', 'score': 0},
+        {'text': 'Greece', 'score': 10},
+        {'text': 'Paris', 'score': 0},
+        {'text': 'Russia', 'score': 0}
+      ],
+      'hint': 'No luck on this one',
+    },
+    {
+      'questionText': '7.	How many stars has the American flag got?',
+      'answers': [
+        {'text': 'Fifty', 'score': 10},
+        {'text': 'Thirty', 'score': 0},
+        {'text': 'Twenty', 'score': 0},
+        {'text': 'Fourty', 'score': 0}
+      ],
+      'hint': 'You can check the image online right away and start counting...(lol)',
+    },
 
-  void _incrementCounter() {
+    {
+      'questionText': '8. Who is the largest toy distributor in the world ?',
+      'answers': [
+        {'text': 'Tesla', 'score': 0},
+        {'text': 'Toyota', 'score': 0},
+        {'text': 'McDonalds', 'score': 10},
+        {'text': 'Benz', 'score': 0}
+      ],
+      'hint': 'One kinda look odd amoung the options',
+    },
+  ];
+
+  int _currentQuestion = 0;
+  int _totalScore = 0;
+
+  void _restartQuiz() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      _currentQuestion = 0;
+      _totalScore = 0;
+    });
+  }
+
+  void _nextQuestion(int score) {
+    setState(() {
+      _currentQuestion++;
+      _totalScore += score;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        centerTitle: true,
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: _currentQuestion < _questions.length
+              ? Quiz(
+                  questions: _questions,
+                  currentQuestion: _currentQuestion,
+                  nextQuestion: _nextQuestion,
+                  hint: _questions,
+                  score: _totalScore,
+                )
+              : Result(
+                  restartQuiz: _restartQuiz,
+                  totalScore: _totalScore,
+                  totalQuestion: _currentQuestion)),
     );
   }
 }
