@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 }
 
 class Homepage extends StatefulWidget {
-  const Homepage({ Key? key }) : super(key: key);
+  const Homepage({Key? key}) : super(key: key);
 
   @override
   _HomepageState createState() => _HomepageState();
@@ -33,6 +33,24 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Expenses Tracker'),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            width: double.infinity,
+            child: const Card(
+              color: Colors.blue,
+              child: Text('CHART'),
+              elevation: 5,
+            ),
+          ),
+          const Card(
+            color: Colors.red,
+            child: Text('LIST OF TX'),
+          ),
+        ],
       ),
     );
   }
