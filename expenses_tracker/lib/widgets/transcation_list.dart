@@ -6,14 +6,33 @@ import '../models/transaction.dart';
 class TransactionList extends StatelessWidget {
   final List<Transaction>? userTransactions;
 
-  const TransactionList({required this.userTransactions, Key? key }) : super(key: key);
+  const TransactionList({required this.userTransactions, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 300,
-      child: ListView.builder(itemBuilder: (_, index) {
-        return  Card(
+      child: userTransactions!.isEmpty
+          ? Column(
+              children: [
+                Text(
+                  'No transaction has been added yet!',
+                  style: ThemeData.light().textTheme.bodyText1,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  height: 200,
+                  child: Image.asset('assets/images/waiting.png',
+                      fit: BoxFit.cover),
+                ),
+              ],
+            )
+          : ListView.builder(
+              itemBuilder: (_, index) {
+                return Card(
                   child: Row(
                     children: <Widget>[
                       Container(
@@ -23,17 +42,17 @@ class TransactionList extends StatelessWidget {
                         ),
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: Colors.blue,
+                            color: Theme.of(context).primaryColor,
                             width: 2,
                           ),
                         ),
                         padding: const EdgeInsets.all(10),
                         child: Text(
                           '\$${userTransactions![index].amount!.toStringAsFixed(2)}',
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
-                            color: Colors.blue,
+                            color: Theme.of(context).primaryColor,
                           ),
                         ),
                       ),
@@ -48,7 +67,8 @@ class TransactionList extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            DateFormat.yMMMd().format(userTransactions![index].date!),
+                            DateFormat.yMMMd()
+                                .format(userTransactions![index].date!),
                             style: const TextStyle(
                               color: Colors.grey,
                             ),
@@ -58,11 +78,9 @@ class TransactionList extends StatelessWidget {
                     ],
                   ),
                 );
-      },
-      itemCount: userTransactions!.length,
-      ),
+              },
+              itemCount: userTransactions!.length,
+            ),
     );
-            
-        
   }
 }
