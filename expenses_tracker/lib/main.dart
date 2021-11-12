@@ -24,14 +24,14 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Quicksand',
         textTheme: ThemeData.light().textTheme.copyWith(
               bodyText2: const TextStyle(
-                fontFamily: 'OpenSans',
+                fontFamily: 'Quicksand',
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
             ),
         appBarTheme: const AppBarTheme(
           titleTextStyle: TextStyle(
-            fontFamily: 'OpenSans',
+            fontFamily: 'Quicksand',
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
@@ -75,11 +75,11 @@ class _HomepageState extends State<Homepage> {
     }).toList();
   }
 
-  void _addNewTransaction(String txTitle, double txAmount) {
+  void _addNewTransaction(String txTitle, double txAmount, DateTime chosenDate) {
     final newTx = Transaction(
       title: txTitle,
       amount: txAmount,
-      date: DateTime.now(),
+      date: chosenDate,
       id: DateTime.now().toString(),
     );
     setState(() {
@@ -94,6 +94,12 @@ class _HomepageState extends State<Homepage> {
         return NewTransaction(addNewTransaction: _addNewTransaction);
       },
     );
+  }
+
+  void _deleteTransaction(String id) {
+    setState(() {
+      _userTransactions.removeWhere((tx) => tx.id == id);
+    });
   }
 
   @override
@@ -119,6 +125,7 @@ class _HomepageState extends State<Homepage> {
         children: <Widget>[
           Chart(recentTransactions: _recentTransactions,),
           TransactionList(
+            deleteTx: _deleteTransaction,
             userTransactions: _userTransactions,
           ),
         ],
