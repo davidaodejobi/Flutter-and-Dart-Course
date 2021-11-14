@@ -38,7 +38,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final _questions = [
     {
-      'questionText': '1. Which actor played James Bond in 1990?',
+      'questionText': 'Which actor played James Bond in 1990?',
       'answers': [
         {'text': 'Will Smith', 'score': 0},
         {'text': 'Pierce Brosnan', 'score': 10},
@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
     },
     {
       'questionText':
-          '2. What is the real name of Oprah Winfrey, a famous American TV host?',
+          'What is the real name of Oprah Winfrey, a famous American TV host?',
       'answers': [
         {'text': 'Orwin', 'score': 0},
         {'text': 'Winfery', 'score': 0},
@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'hint': 'No luck on this one(lol), it looks simple',
     },
     {
-      'questionText': '3. What is the national sport in Japan?',
+      'questionText': 'What is the national sport in Japan?',
       'answers': [
         {'text': 'Wrestling', 'score': 0},
         {'text': 'Dancing', 'score': 0},
@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'hint': 'If you don\'t get that, forget about it(Lmao)',
     },
     {
-      'questionText': '3. Who introduced football in the world?',
+      'questionText': 'Who introduced football in the world?',
       'answers': [
         {'text': 'France', 'score': 0},
         {'text': 'China', 'score': 0},
@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
     },
     {
       'questionText':
-          '5. Which ball is worth the most points in English snooker?',
+          'Which ball is worth the most points in English snooker?',
       'answers': [
         {'text': 'White ball', 'score': 0},
         {'text': 'Green ball', 'score': 0},
@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'hint': 'If it\'s not white, then it should be ...',
     },
     {
-      'questionText': '6. In which country were the first Olympic Games held?',
+      'questionText': 'In which country were the first Olympic Games held?',
       'answers': [
         {'text': 'England', 'score': 0},
         {'text': 'Greece', 'score': 10},
@@ -100,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'hint': 'No luck on this one',
     },
     {
-      'questionText': '7.	How many stars has the American flag got?',
+      'questionText': 'How many stars has the American flag got?',
       'answers': [
         {'text': 'Fifty', 'score': 10},
         {'text': 'Thirty', 'score': 0},
@@ -111,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
     },
 
     {
-      'questionText': '8. Who is the largest toy distributor in the world ?',
+      'questionText': 'Who is the largest toy distributor in the world ?',
       'answers': [
         {'text': 'Tesla', 'score': 0},
         {'text': 'Toyota', 'score': 0},
