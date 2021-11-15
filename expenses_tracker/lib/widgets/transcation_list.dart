@@ -7,12 +7,13 @@ class TransactionList extends StatelessWidget {
   final List<Transaction>? userTransactions;
   final Function? deleteTx;
 
+  // ignore: use_key_in_widget_constructors
   const TransactionList({this.userTransactions, this.deleteTx});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 450,
+      height: 550,
       child: userTransactions!.isEmpty
           ? Column(
               children: [

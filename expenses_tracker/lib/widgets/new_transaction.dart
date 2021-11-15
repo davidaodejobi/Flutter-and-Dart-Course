@@ -76,7 +76,7 @@ class _NewTransactionState extends State<NewTransaction> {
               controller: _amountController,
               keyboardType: TextInputType.number,
               onSubmitted: (_) => _submitData(),
-              //what is done is kinda if a rule to tell flutter that we got an argument
+              //what is done here is kinda a rule to tell flutter that we got an argument
               //here but i don't really care about it or using it. In those cases it's adviceable to use this method to solve those issues
             ),
             Row(children: [

@@ -50,20 +50,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  final List<Transaction> _userTransactions = [
-    // Transaction(
-    //   id: 't1',
-    //   title: 'New Shoes',
-    //   amount: 69.99,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't2',
-    //   title: 'Weekly Groceries',
-    //   amount: 16.53,
-    //   date: DateTime.now(),
-    // ),
-  ];
+  final List<Transaction> _userTransactions = [];
 
   List<Transaction> get _recentTransactions {
     return _userTransactions.where((tx) {
@@ -104,8 +91,8 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    final mediaQuery = MediaQuery.of(context);
+    final appBar =AppBar(
         title: const Text('Expenses Tracker'),
         actions: [
           IconButton(
@@ -113,7 +100,9 @@ class _HomepageState extends State<Homepage> {
             icon: const Icon(Icons.add),
           )
         ],
-      ),
+      );
+    return Scaffold(
+      appBar: appBar,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () => _startAddNewTransaction(context),
@@ -123,10 +112,21 @@ class _HomepageState extends State<Homepage> {
         // mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Chart(recentTransactions: _recentTransactions,),
-          TransactionList(
-            deleteTx: _deleteTransaction,
-            userTransactions: _userTransactions,
+          SizedBox(
+            height: (mediaQuery.size.height -
+                appBar.preferredSize.height -
+                mediaQuery.padding.top) *
+                0.3,
+            child: Chart(recentTransactions: _recentTransactions,)),
+          SizedBox(
+            height: (mediaQuery.size.height -
+                appBar.preferredSize.height -
+                mediaQuery.padding.top) *
+                0.7,
+            child: TransactionList(
+              deleteTx: _deleteTransaction,
+              userTransactions: _userTransactions,
+            ),
           ),
         ],
       ),
