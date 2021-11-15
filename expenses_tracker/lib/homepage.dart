@@ -57,7 +57,11 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
+    final isLandScape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
+
     final mediaQuery = MediaQuery.of(context);
+
     final appBar = AppBar(
       title: const Text('Expenses Tracker'),
       actions: [
@@ -67,6 +71,18 @@ class _HomepageState extends State<Homepage> {
         )
       ],
     );
+
+    final txListWidget = SizedBox(
+      height: (mediaQuery.size.height -
+              appBar.preferredSize.height -
+              mediaQuery.padding.top) *
+          0.7,
+      child: TransactionList(
+        deleteTx: _deleteTransaction,
+        userTransactions: _userTransactions,
+      ),
+    );
+
     return Scaffold(
       appBar: appBar,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -77,47 +93,52 @@ class _HomepageState extends State<Homepage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'Show Chart',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Switch.adaptive(
-                // ignore: deprecated_member_use
-                activeColor: Theme.of(context).accentColor,
-                value: _showChart!,
-                onChanged: (val) {
-                  setState(() {
-                    _showChart = val;
-                  });
-                },
-              ),
-            ],
-          ),
-          _showChart!
-              ? SizedBox(
-                  height: (mediaQuery.size.height -
-                          appBar.preferredSize.height -
-                          mediaQuery.padding.top) *
-                      0.3,
-                  child: Chart(
-                    recentTransactions: _recentTransactions,
-                  ))
-              : SizedBox(
-                  height: (mediaQuery.size.height -
-                          appBar.preferredSize.height -
-                          mediaQuery.padding.top) *
-                      0.7,
-                  child: TransactionList(
-                    deleteTx: _deleteTransaction,
-                    userTransactions: _userTransactions,
+          if (isLandScape)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  'Show Chart',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
+                Switch.adaptive(
+                  // ignore: deprecated_member_use
+                  activeColor: Theme.of(context).accentColor,
+                  value: _showChart!,
+                  onChanged: (val) {
+                    setState(() {
+                      _showChart = val;
+                    });
+                  },
+                ),
+              ],
+            ),
+          if (!isLandScape)
+            SizedBox(
+              height: (mediaQuery.size.height -
+                      appBar.preferredSize.height -
+                      mediaQuery.padding.top) *
+                  0.3,
+              child: Chart(
+                recentTransactions: _recentTransactions,
+              ),
+            ),
+          if (!isLandScape) txListWidget,
+          if (isLandScape)
+            _showChart!
+                ? SizedBox(
+                    height: (mediaQuery.size.height -
+                            appBar.preferredSize.height -
+                            mediaQuery.padding.top) *
+                        0.7,
+                    child: Chart(
+                      recentTransactions: _recentTransactions,
+                    ),
+                  )
+                : txListWidget,
         ],
       ),
     );

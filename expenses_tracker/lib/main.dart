@@ -27,14 +27,14 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Quicksand',
         textTheme: ThemeData.light().textTheme.copyWith(
               bodyText2: const TextStyle(
-                fontFamily: 'Quicksand',
+                fontFamily: 'OpenSans',
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
             ),
         appBarTheme: const AppBarTheme(
           titleTextStyle: TextStyle(
-            fontFamily: 'Quicksand',
+            fontFamily: 'OpenSans',
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
