@@ -59,43 +59,52 @@ class _NewTransactionState extends State<NewTransaction> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            TextField(
-              decoration: const InputDecoration(labelText: 'Title'),
-              controller: _titleController,
-              onSubmitted: (_) => _submitData(),
-            ),
-            TextField(
-              decoration: const InputDecoration(labelText: 'Amount'),
-              controller: _amountController,
-              keyboardType: TextInputType.number,
-              onSubmitted: (_) => _submitData(),
-              //what is done here is kinda a rule to tell flutter that we got an argument
-              //here but i don't really care about it or using it. In those cases it's adviceable to use this method to solve those issues
-            ),
-            Row(children: [
-              Expanded(
-                child: Text(_selectedDate == null
-                    ? 'No Date Chosen!'
-                    : 'Picked Date: ${DateFormat.yMd().format(_selectedDate!)}'),
-              ),
-              TextButton(
-                child: const Text('Choose Date'),
-                onPressed: _presentDatePicker,
-              ),
-            ]),
-            ElevatedButton(
-              child: const Text('Add Transaction'),
-              onPressed: _submitData,
-            ),
-          ],
+    return Container(
+      padding: EdgeInsets.only(
+        top: 10,
+        left: 10,
+        right: 10,
+        bottom: MediaQuery.of(context).viewInsets.bottom + 10,
+      ),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(10),
+          topRight: Radius.circular(10),
         ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextField(
+            decoration: const InputDecoration(labelText: 'Title'),
+            controller: _titleController,
+            onSubmitted: (_) => _submitData(),
+          ),
+          TextField(
+            decoration: const InputDecoration(labelText: 'Amount'),
+            controller: _amountController,
+            keyboardType: TextInputType.number,
+            onSubmitted: (_) => _submitData(),
+            //what is done here is kinda a rule to tell flutter that we got an argument
+            //here but i don't really care about it or using it. In those cases it's adviceable to use this method to solve those issues
+          ),
+          Row(children: [
+            Expanded(
+              child: Text(_selectedDate == null
+                  ? 'No Date Chosen!'
+                  : 'Picked Date: ${DateFormat.yMd().format(_selectedDate!)}'),
+            ),
+            TextButton(
+              child: const Text('Choose Date'),
+              onPressed: _presentDatePicker,
+            ),
+          ]),
+          ElevatedButton(
+            child: const Text('Add Transaction'),
+            onPressed: _submitData,
+          ),
+        ],
       ),
     );
   }

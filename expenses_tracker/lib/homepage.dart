@@ -42,6 +42,9 @@ class _HomepageState extends State<Homepage> {
 
   void _startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(25.0))),
+      isScrollControlled: true,
       context: ctx,
       builder: (bCtx) {
         return NewTransaction(addNewTransaction: _addNewTransaction);

@@ -1,6 +1,7 @@
 import 'package:expenses_tracker/models/transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import '../models/transaction.dart';
 
 class TransactionList extends StatelessWidget {
@@ -60,11 +61,23 @@ class TransactionList extends StatelessWidget {
                     ),
                     style: Theme.of(context).textTheme.bodyText1,
                   ),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.delete),
-                    color: Theme.of(context).errorColor,
-                    onPressed: () => deleteTx!(userTransactions![index].id),
-                  ),
+                  trailing: MediaQuery.of(context).size.width > 500
+                      ? TextButton.icon(
+                          onPressed: () =>
+                              deleteTx!(userTransactions![index].id),
+                          icon: const Icon(
+                            Icons.delete,
+                            color: Colors.red,
+                          ),
+                          label: const Text('Delete',
+                              style: TextStyle(color: Colors.red)),
+                        )
+                      : IconButton(
+                          icon: const Icon(Icons.delete),
+                          color: Theme.of(context).errorColor,
+                          onPressed: () =>
+                              deleteTx!(userTransactions![index].id),
+                        ),
                 ),
               );
             },
@@ -72,3 +85,23 @@ class TransactionList extends StatelessWidget {
           );
   }
 }
+
+/*
+ trailing: MediaQuery.of(context).size.width > 360
+                      ? TextButton(
+                          onPressed: () =>
+                              deleteTx!(userTransactions![index].id),
+                          child: Row(
+                            children: const [
+                              Icon(Icons.delete),
+                              Text('Delete'),
+                            ],
+                          ),
+                        )
+                      : IconButton(
+                          icon: const Icon(Icons.delete),
+                          color: Theme.of(context).errorColor,
+                          onPressed: () =>
+                              deleteTx!(userTransactions![index].id),
+                        ),
+*/
