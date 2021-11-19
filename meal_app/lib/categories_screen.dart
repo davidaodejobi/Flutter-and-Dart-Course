@@ -4,13 +4,17 @@ import './category_item.dart';
 import 'dummy_data.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({Key? key}) : super(key: key);
+  const CategoriesScreen({this.theme, Key? key}) : super(key: key);
+
+  final ThemeData? theme;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('DeliMeal'),
+        title: Text(
+          'DeliMeal',
+        ),
       ),
       body: GridView(
         padding: const EdgeInsets.all(20),
