@@ -36,7 +36,7 @@ class MealAppTheme {
       fontWeight: FontWeight.w700,
       color: Colors.white,
     ),
-    headline1: GoogleFonts.lato(
+    headline1: GoogleFonts.openSans(
       fontSize: 32.0,
       fontWeight: FontWeight.bold,
       color: Colors.white,
@@ -92,7 +92,7 @@ class MealAppTheme {
         foregroundColor: Colors.white,
         backgroundColor: Colors.grey[900],
         titleTextStyle: TextStyle(
-          fontFamily: GoogleFonts.lato().fontFamily,
+          fontFamily: GoogleFonts.archivo().fontFamily,
           color: Colors.white,
           fontSize: 20.0,
           fontWeight: FontWeight.w600,
