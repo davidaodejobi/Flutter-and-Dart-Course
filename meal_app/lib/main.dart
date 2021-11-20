@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:meal_app/category_meal_screen.dart';
 
@@ -16,11 +18,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'DeliMeals',
       theme: theme,
-      home: CategoriesScreen(
-        theme: theme,
-      ),
+      initialRoute: '/',
+      // home: CategoriesScreen(
+      //   theme: theme,
+      // ),
       routes: {
-        '/category-meal': (ctx) => const CategoryMeal(),
+        '/': (ctx) => CategoriesScreen(
+              theme: theme,
+            ),
+        CategoryMeal.routeName: (ctx) => const CategoryMeal(),
         // '/categories': (context) => CategoriesScreen(
         //       theme: theme,
         //     ),
