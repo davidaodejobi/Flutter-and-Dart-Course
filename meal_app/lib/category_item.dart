@@ -8,7 +8,7 @@ class CategoryItem extends StatelessWidget {
   const CategoryItem({required this.title, required this.color, Key? key})
       : super(key: key);
 
-  void _selectCategory(BuildContext ctx) {
+  void selectCategory(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return const CategoryMeal();
     }));
@@ -17,7 +17,7 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => _selectCategory,
+      onTap: () => selectCategory(context),
       splashColor: Theme.of(context).primaryColor,
       borderRadius: BorderRadius.circular(15),
       child: Container(
