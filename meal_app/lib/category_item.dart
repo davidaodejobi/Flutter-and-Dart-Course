@@ -4,13 +4,18 @@ import 'package:meal_app/category_meal_screen.dart';
 class CategoryItem extends StatelessWidget {
   final String? title;
   final Color? color;
+  final String? id;
 
-  const CategoryItem({required this.title, required this.color, Key? key})
+  const CategoryItem(
+      {this.id, required this.title, required this.color, Key? key})
       : super(key: key);
 
   void selectCategory(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return const CategoryMeal();
+      return CategoryMeal(
+        categoryTitle: title!,
+        categoryId: id,
+      );
     }));
   }
 
