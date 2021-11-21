@@ -61,6 +61,58 @@ class _HomepageState extends State<Homepage> {
     });
   }
 
+  List<Widget> _buildLandscapeContent(MediaQueryData mediaQuery,
+      PreferredSizeWidget appBar, Widget txListWidget) {
+    return [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            'Show Chart',
+            style: Theme.of(context).textTheme.bodyText2,
+          ),
+          Switch.adaptive(
+            // ignore: deprecated_member_use
+            activeColor: Theme.of(context).accentColor,
+            value: _showChart!,
+            onChanged: (val) {
+              setState(() {
+                _showChart = val;
+              });
+            },
+          ),
+        ],
+      ),
+      _showChart!
+          ? SizedBox(
+              height: (mediaQuery.size.height -
+                      appBar.preferredSize.height -
+                      mediaQuery.padding.top) *
+                  0.7,
+              child: Chart(
+                recentTransactions: _recentTransactions,
+              ),
+            )
+          : txListWidget
+    ];
+  }
+
+  List<Widget> _buildPortraitContent(
+      MediaQueryData mediaQuery, AppBar appBar, Widget txListWidget) {
+    return [
+      SizedBox(
+        height: (mediaQuery.size.height -
+                appBar.preferredSize.height -
+                mediaQuery.padding.top) *
+            0.3,
+        child: Chart(
+          recentTransactions: _recentTransactions,
+        ),
+      ),
+      txListWidget
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     final isLandScape =
@@ -109,51 +161,17 @@ class _HomepageState extends State<Homepage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           if (isLandScape)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text(
-                  'Show Chart',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Switch.adaptive(
-                  // ignore: deprecated_member_use
-                  activeColor: Theme.of(context).accentColor,
-                  value: _showChart!,
-                  onChanged: (val) {
-                    setState(() {
-                      _showChart = val;
-                    });
-                  },
-                ),
-              ],
+            ..._buildLandscapeContent(
+              mediaQuery,
+              appBar,
+              txListWidget,
             ),
           if (!isLandScape)
-            SizedBox(
-              height: (mediaQuery.size.height -
-                      appBar.preferredSize.height -
-                      mediaQuery.padding.top) *
-                  0.3,
-              child: Chart(
-                recentTransactions: _recentTransactions,
-              ),
+            ..._buildPortraitContent(
+              mediaQuery,
+              appBar as AppBar,
+              txListWidget,
             ),
-          if (!isLandScape) txListWidget,
-          if (isLandScape)
-            _showChart!
-                ? SizedBox(
-                    height: (mediaQuery.size.height -
-                            appBar.preferredSize.height -
-                            mediaQuery.padding.top) *
-                        0.7,
-                    child: Chart(
-                      recentTransactions: _recentTransactions,
-                    ),
-                  )
-                : txListWidget,
         ],
       ),
     );
