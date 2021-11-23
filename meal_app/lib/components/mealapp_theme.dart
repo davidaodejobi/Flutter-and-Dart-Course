@@ -79,7 +79,7 @@ class MealAppTheme {
         ),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        selectedItemColor: Colors.green,
+        selectedItemColor: Colors.teal,
       ),
       textTheme: lightTextTheme,
     );
@@ -99,7 +99,7 @@ class MealAppTheme {
         ),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        selectedItemColor: Colors.green,
+        selectedItemColor: Colors.teal,
       ),
       textTheme: darkTextTheme,
     );
