@@ -3,27 +3,27 @@ import 'package:google_fonts/google_fonts.dart';
 
 class MealAppTheme {
   static TextTheme lightTextTheme = TextTheme(
-    bodyText1: GoogleFonts.openSans(
+    bodyText1: GoogleFonts.lancelot(
       fontSize: 14.0,
       fontWeight: FontWeight.w700,
       color: Colors.black,
     ),
-    headline1: GoogleFonts.openSans(
+    headline1: GoogleFonts.lancelot(
       fontSize: 32.0,
       fontWeight: FontWeight.bold,
       color: Colors.black,
     ),
-    headline2: GoogleFonts.openSans(
+    headline2: GoogleFonts.lancelot(
       fontSize: 21.0,
       fontWeight: FontWeight.w700,
       color: Colors.black,
     ),
-    headline3: GoogleFonts.openSans(
+    headline3: GoogleFonts.lancelot(
       fontSize: 16.0,
       fontWeight: FontWeight.w600,
       color: Colors.black,
     ),
-    headline6: GoogleFonts.openSans(
+    headline6: GoogleFonts.lancelot(
       fontSize: 20.0,
       fontWeight: FontWeight.w600,
       color: Colors.black,
@@ -31,27 +31,27 @@ class MealAppTheme {
   );
 
   static TextTheme darkTextTheme = TextTheme(
-    bodyText1: GoogleFonts.openSans(
+    bodyText1: GoogleFonts.lancelot(
       fontSize: 14.0,
       fontWeight: FontWeight.w700,
       color: Colors.white,
     ),
-    headline1: GoogleFonts.openSans(
+    headline1: GoogleFonts.lancelot(
       fontSize: 32.0,
       fontWeight: FontWeight.bold,
       color: Colors.white,
     ),
-    headline2: GoogleFonts.openSans(
+    headline2: GoogleFonts.lancelot(
       fontSize: 21.0,
       fontWeight: FontWeight.w700,
       color: Colors.white,
     ),
-    headline3: GoogleFonts.openSans(
+    headline3: GoogleFonts.lancelot(
       fontSize: 16.0,
       fontWeight: FontWeight.w600,
       color: Colors.white,
     ),
-    headline6: GoogleFonts.openSans(
+    headline6: GoogleFonts.lancelot(
       fontSize: 20.0,
       fontWeight: FontWeight.w600,
       color: Colors.white,

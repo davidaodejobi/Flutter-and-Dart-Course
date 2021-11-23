@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MainDrawer extends StatelessWidget {
+  const MainDrawer({Key? key}) : super(key: key);
+
   Widget buildListTile(String title, IconData icon) {
     return ListTile(
       leading: Icon(
@@ -30,18 +32,19 @@ class MainDrawer extends StatelessWidget {
           Container(
             height: 120,
             width: double.infinity,
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             alignment: Alignment.centerLeft,
             color: Theme.of(context).secondaryHeaderColor,
             child: Text(
-              'Cooking Up!',
-              style: TextStyle(
-                  fontWeight: FontWeight.w900,
-                  fontSize: 30,
-                  color: Theme.of(context).primaryColor),
+              'Modify Things',
+              style: Theme.of(context).textTheme.headline5!.copyWith(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                    color: Theme.of(context).primaryColor,
+                  ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           buildListTile(
