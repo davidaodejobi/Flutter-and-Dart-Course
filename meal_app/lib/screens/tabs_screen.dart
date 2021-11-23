@@ -41,6 +41,7 @@ class _TabsScreenState extends State<TabsScreen> {
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
         currentIndex: _selectedPageIndex,
+        elevation: 20,
         // type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(

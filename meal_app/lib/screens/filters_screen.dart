@@ -14,6 +14,9 @@ class FiltersScreen extends StatelessWidget {
         title: const Text('Filters'),
       ),
       drawer: const MainDrawer(),
+      body: const Center(
+        child: Text('Filters\nStill working on this part'),
+      ),
     );
   }
 }

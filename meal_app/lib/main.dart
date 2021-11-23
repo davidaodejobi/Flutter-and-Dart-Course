@@ -11,7 +11,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
-  final theme = MealAppTheme.light();
+  final theme = MealAppTheme.dark();
 
   @override
   Widget build(BuildContext context) {
