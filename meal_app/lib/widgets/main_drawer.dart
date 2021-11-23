@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 class MainDrawer extends StatelessWidget {
   const MainDrawer({Key? key}) : super(key: key);
 
-  Widget buildListTile(String title, IconData icon) {
+  Widget buildListTile(BuildContext context, String title, IconData icon) {
     return ListTile(
       leading: Icon(
         icon,
@@ -12,11 +12,7 @@ class MainDrawer extends StatelessWidget {
       ),
       title: Text(
         title,
-        style: TextStyle(
-          fontFamily: GoogleFonts.lancelot(fontSize: 20).fontFamily,
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-        ),
+        style: Theme.of(context).textTheme.headline2,
       ),
       onTap: () {
         // ...
@@ -48,10 +44,12 @@ class MainDrawer extends StatelessWidget {
             height: 20,
           ),
           buildListTile(
+            context,
             'Meals',
             Icons.restaurant,
           ),
           buildListTile(
+            context,
             'Filters',
             Icons.settings,
           ),
