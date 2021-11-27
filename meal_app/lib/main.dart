@@ -17,7 +17,18 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final theme = MealAppTheme.light();
+  var theme = false;
+
+  void _setTheme(bool value) {
+    setState(() {
+      theme = value;
+    });
+  }
+
+  Map<bool, Object> appTheme = {
+    false: MealAppTheme.light(),
+    true: MealAppTheme.dark(),
+  };
 
   Map<String, bool> _filters = {
     'gluten': false,
@@ -54,7 +65,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'DeliMeals',
-      theme: theme,
+      theme: appTheme[theme] as ThemeData,
       initialRoute: '/',
       routes: {
         '/': (ctx) => const TabsScreen(),
@@ -63,8 +74,11 @@ class _MyAppState extends State<MyApp> {
             ),
         MealDetailScreen.routeName: (ctx) => const MealDetailScreen(),
         FiltersScreen.routeName: (ctx) => FiltersScreen(
+              theme: theme,
               filters: _filters,
               onSave: _setFilters,
+              setTheme: _setTheme,
+              currentTheme: theme,
             ),
       },
     );

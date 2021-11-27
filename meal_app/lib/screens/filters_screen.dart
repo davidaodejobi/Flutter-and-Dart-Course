@@ -2,19 +2,32 @@ import 'package:flutter/material.dart';
 
 import '/widgets/main_drawer.dart';
 
+// ignore: must_be_immutable
 class FiltersScreen extends StatefulWidget {
-  const FiltersScreen({this.filters, this.onSave, Key? key}) : super(key: key);
+  FiltersScreen({
+    this.theme,
+    this.setTheme,
+    this.filters,
+    this.onSave,
+    this.currentTheme,
+    Key? key,
+  }) : super(key: key);
 
   static const routeName = '/filters';
 
   final Function? onSave;
   final Map<String, bool>? filters;
+  bool? theme;
+  final Function? setTheme;
+  final bool? currentTheme;
 
   @override
   State<FiltersScreen> createState() => _FiltersScreenState();
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
+  var appTheme = false;
+
   var _glutenFree = false;
   var _vegetarian = false;
   var _vegan = false;
@@ -22,10 +35,13 @@ class _FiltersScreenState extends State<FiltersScreen> {
 
   @override
   void initState() {
+    appTheme = widget.theme ?? false;
+
     _glutenFree = widget.filters?['gluten'] ?? false;
     _vegetarian = widget.filters?['vegetarian'] ?? false;
     _vegan = widget.filters?['vegan'] ?? false;
     _lactoseFree = widget.filters?['lactose'] ?? false;
+    super.initState();
   }
 
   @override
@@ -89,6 +105,18 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     currentValue: _vegan, updateValue: (value) {
                   setState(() {
                     _vegan = value;
+                  });
+                }),
+                const Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Divider(),
+                ),
+                buildSwitchListTile('Change Theme', 'Dark or Light Theme',
+                    currentValue: appTheme, updateValue: (newTheme) {
+                  setState(() {
+                    appTheme = newTheme;
+                    widget.theme = appTheme;
+                    widget.setTheme!(appTheme);
                   });
                 }),
               ],
