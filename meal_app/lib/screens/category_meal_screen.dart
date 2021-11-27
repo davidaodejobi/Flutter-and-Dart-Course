@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:meal_app/components/dummy_data.dart';
 
 import '/models/meals.dart';
 import '/widgets/meal_item.dart';
@@ -52,6 +54,7 @@ class _CategoryMealState extends State<CategoryMeal> {
       body: ListView.builder(
         itemBuilder: (ctx, index) {
           return MealItem(
+            svg: displayedMeals![index].svg,
             id: displayedMeals![index].id,
             title: displayedMeals![index].title,
             imageUrl: displayedMeals![index].imageUrl,
