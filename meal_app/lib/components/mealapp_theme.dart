@@ -28,6 +28,11 @@ class MealAppTheme {
       fontWeight: FontWeight.w600,
       color: Colors.black,
     ),
+    caption: GoogleFonts.lancelot(
+      fontSize: 16.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+    ),
   );
 
   static TextTheme darkTextTheme = TextTheme(
@@ -56,6 +61,11 @@ class MealAppTheme {
       fontWeight: FontWeight.w600,
       color: Colors.white,
     ),
+    caption: GoogleFonts.lancelot(
+      fontSize: 16.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+    ),
   );
 
   static ThemeData light() {
@@ -79,7 +89,7 @@ class MealAppTheme {
         ),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        selectedItemColor: Colors.teal,
+        selectedItemColor: Colors.black,
       ),
       textTheme: lightTextTheme,
     );
@@ -90,7 +100,7 @@ class MealAppTheme {
       brightness: Brightness.dark,
       appBarTheme: AppBarTheme(
         foregroundColor: Colors.white,
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.black.withOpacity(0.5),
         titleTextStyle: TextStyle(
           fontFamily: GoogleFonts.archivo().fontFamily,
           color: Colors.white,
@@ -98,8 +108,10 @@ class MealAppTheme {
           fontWeight: FontWeight.w600,
         ),
       ),
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        selectedItemColor: Colors.teal,
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: Colors.black.withOpacity(0.5),
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey.withOpacity(0.5),
       ),
       textTheme: darkTextTheme,
     );

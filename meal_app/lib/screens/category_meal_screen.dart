@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:meal_app/models/meals.dart';
-import 'package:meal_app/widgets/meal_item.dart';
 
-import '../components/dummy_data.dart';
+import '/models/meals.dart';
+import '/widgets/meal_item.dart';
 
 class CategoryMeal extends StatefulWidget {
   static const routeName = '/category-meals';
-  // final String? categoryId;
-  // final String? categoryTitle;
+
+  final List<Meal>? availableMeals;
 
   const CategoryMeal({
-    // this.categoryId,
-    // this.categoryTitle,
+    this.availableMeals,
     Key? key,
   }) : super(key: key);
 
@@ -31,7 +29,7 @@ class _CategoryMealState extends State<CategoryMeal> {
           ModalRoute.of(context)!.settings.arguments as Map<String, String>;
       categoryTitle = routeArgs['title'];
       final categoryId = routeArgs['id'];
-      displayedMeals = DUMMY_MEALS.where((meal) {
+      displayedMeals = widget.availableMeals!.where((meal) {
         return meal.categories!.contains(categoryId);
       }).toList();
       _loadedInitData = true;
@@ -54,6 +52,7 @@ class _CategoryMealState extends State<CategoryMeal> {
       body: ListView.builder(
         itemBuilder: (ctx, index) {
           return MealItem(
+            svg: displayedMeals![index].svg,
             id: displayedMeals![index].id,
             title: displayedMeals![index].title,
             imageUrl: displayedMeals![index].imageUrl,

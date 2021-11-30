@@ -9,51 +9,61 @@ const DUMMY_CATEGORIES = [
     id: 'c1',
     title: 'Italian',
     color: Colors.purple,
+    svg: 'assets/icons/brigadeiro.svg',
   ),
   Category(
     id: 'c2',
     title: 'Quick & Easy',
     color: Colors.red,
+    svg: 'assets/icons/caviar.svg',
   ),
   Category(
     id: 'c3',
     title: 'Hamburgers',
     color: Colors.orange,
+    svg: 'assets/icons/cute-pumpkin.svg',
   ),
   Category(
     id: 'c4',
     title: 'German',
     color: Colors.amber,
+    svg: 'assets/icons/greek-salad.svg',
   ),
   Category(
     id: 'c5',
     title: 'Light & Lovely',
     color: Colors.blue,
+    svg: 'assets/icons/kawaii-noodle.svg',
   ),
   Category(
     id: 'c6',
     title: 'Exotic',
     color: Colors.green,
+    svg: 'assets/icons/paella.svg',
   ),
   Category(
     id: 'c7',
     title: 'Breakfast',
     color: Colors.lightBlue,
+    svg: 'assets/icons/salad.svg',
   ),
   Category(
     id: 'c8',
     title: 'Asian',
     color: Colors.lightGreen,
+    svg: 'assets/icons/salami-pizza.svg',
   ),
   Category(
     id: 'c9',
     title: 'French',
     color: Colors.pink,
+    svg: 'assets/icons/sauce.svg',
   ),
   Category(
     id: 'c10',
     title: 'Summer',
     color: Colors.teal,
+    svg: 'assets/icons/sunny-side-up-eggs.svg',
   ),
 ];
 
@@ -92,6 +102,7 @@ const DUMMY_MEALS = [
     isVegan: true,
     isVegetarian: true,
     isLactoseFree: true,
+    svg: 'assets/icons/brigadeiro.svg',
   ),
   Meal(
     id: 'm2',
@@ -120,8 +131,10 @@ const DUMMY_MEALS = [
     isVegan: false,
     isVegetarian: false,
     isLactoseFree: false,
+    svg: 'assets/icons/caviar.svg',
   ),
   Meal(
+    svg: 'assets/icons/cute-pumpkin.svg',
     id: 'm3',
     categories: [
       'c2',
@@ -187,6 +200,7 @@ const DUMMY_MEALS = [
     isVegan: false,
     isVegetarian: false,
     isLactoseFree: false,
+    svg: 'assets/icons/greek-salad.svg',
   ),
   Meal(
     id: 'm5',
@@ -223,6 +237,7 @@ const DUMMY_MEALS = [
     isVegan: false,
     isVegetarian: true,
     isLactoseFree: true,
+    svg: 'assets/icons/kawaii-noodle.svg',
   ),
   Meal(
     id: 'm6',
@@ -259,6 +274,7 @@ const DUMMY_MEALS = [
     isVegan: false,
     isVegetarian: true,
     isLactoseFree: false,
+    svg: 'assets/icons/paella.svg',
   ),
   Meal(
     id: 'm7',
@@ -290,6 +306,7 @@ const DUMMY_MEALS = [
     isVegan: false,
     isVegetarian: true,
     isLactoseFree: false,
+    svg: 'assets/icons/salad.svg',
   ),
   Meal(
     id: 'm8',
@@ -323,6 +340,7 @@ const DUMMY_MEALS = [
     isVegan: false,
     isVegetarian: false,
     isLactoseFree: true,
+    svg: 'assets/icons/salami-pizza.svg',
   ),
   Meal(
     id: 'm9',
@@ -372,6 +390,7 @@ const DUMMY_MEALS = [
     isVegan: false,
     isVegetarian: true,
     isLactoseFree: false,
+    svg: 'assets/icons/sauce.svg',
   ),
   Meal(
     id: 'm10',
@@ -406,5 +425,6 @@ const DUMMY_MEALS = [
     isVegan: true,
     isVegetarian: true,
     isLactoseFree: true,
+    svg: 'assets/icons/sunny-side-up-eggs.svg',
   ),
 ];

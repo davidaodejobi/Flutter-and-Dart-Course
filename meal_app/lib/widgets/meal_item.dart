@@ -11,6 +11,7 @@ class MealItem extends StatelessWidget {
   final Affordability? affordability;
   final String? id;
   final Function? removeItem;
+  final String? svg;
 
   const MealItem({
     this.title,
@@ -20,6 +21,7 @@ class MealItem extends StatelessWidget {
     this.affordability,
     this.id,
     this.removeItem,
+    this.svg,
     Key? key,
   }) : super(key: key);
 
