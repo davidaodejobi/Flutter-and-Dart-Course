@@ -7,16 +7,20 @@ class MainDrawer extends StatelessWidget {
 
   Widget buildListTile(BuildContext context, String title, IconData icon,
       VoidCallback tapHandler) {
-    return ListTile(
-      leading: Icon(
-        icon,
-        size: 26,
+    return Container(
+      margin: const EdgeInsets.all(8),
+      color: Theme.of(context).secondaryHeaderColor.withOpacity(0.6),
+      child: ListTile(
+        leading: Icon(
+          icon,
+          size: 26,
+        ),
+        title: Text(
+          title,
+          style: Theme.of(context).textTheme.headline2,
+        ),
+        onTap: tapHandler,
       ),
-      title: Text(
-        title,
-        style: Theme.of(context).textTheme.headline2,
-      ),
-      onTap: tapHandler,
     );
   }
 
@@ -26,7 +30,7 @@ class MainDrawer extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-            height: 120,
+            height: 100,
             width: double.infinity,
             padding: const EdgeInsets.all(20),
             alignment: Alignment.centerLeft,

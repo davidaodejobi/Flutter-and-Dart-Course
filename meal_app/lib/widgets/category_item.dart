@@ -42,14 +42,11 @@ class CategoryItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Hero(
-                  tag: id!,
-                  child: SvgPicture.asset(
-                    //assets\icons\sauce.svg
-                    svg!,
-                    height: 60,
-                    fit: BoxFit.fitHeight,
-                  ),
+                SvgPicture.asset(
+                  //assets\icons\sauce.svg
+                  svg!,
+                  height: 60,
+                  fit: BoxFit.fitHeight,
                 ),
                 Container(
                   height: 40,

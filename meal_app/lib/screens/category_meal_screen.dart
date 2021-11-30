@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:meal_app/components/dummy_data.dart';
 
 import '/models/meals.dart';
 import '/widgets/meal_item.dart';

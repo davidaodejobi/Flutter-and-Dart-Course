@@ -111,6 +111,7 @@ class MealAppTheme {
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: Colors.black.withOpacity(0.5),
         selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey.withOpacity(0.5),
       ),
       textTheme: darkTextTheme,
     );
