@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import '/components/dummy_data.dart';
 
 class MealDetailScreen extends StatelessWidget {
-  const MealDetailScreen({Key? key}) : super(key: key);
+  final Function? toggleFavorite;
+  final Function? isFavorite;
+  const MealDetailScreen({this.toggleFavorite, this.isFavorite, Key? key})
+      : super(key: key);
   static const routeName = '/meal-detail';
 
   @override
@@ -17,10 +20,14 @@ class MealDetailScreen extends StatelessWidget {
           title: Text(mealIngredients.title!),
         ),
         floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.delete),
-          onPressed: () {
-            Navigator.of(context).pop(mealId);
-          },
+          child: Icon(
+            isFavorite!(mealId) ? Icons.star : Icons.star_border,
+          ),
+          onPressed: () => toggleFavorite!(mealId),
+
+          // () {
+          //   Navigator.of(context).pop(mealId);
+          // },
         ),
         body: SingleChildScrollView(
           child: Column(
