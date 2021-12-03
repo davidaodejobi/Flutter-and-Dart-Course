@@ -29,6 +29,7 @@ class ProductItem extends StatelessWidget {
         title: Text(
           title!,
           textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.button,
         ),
         trailing: IconButton(
           icon: const Icon(Icons.shopping_cart),
