@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '/screens/product_overview_screen.dart';
 import '/shopapp_theme.dart';
 import 'providers/products.dart';
+import 'screens/product_detail_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,6 +21,9 @@ class MyApp extends StatelessWidget {
         title: 'MyShop',
         theme: theme,
         home: const ProductsOverviewScreen(),
+        routes: {
+          ProductDetailScreen.routeName: (ctx) => const ProductDetailScreen(),
+        },
       ),
     );
   }
