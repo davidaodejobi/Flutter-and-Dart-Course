@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/providers/cart.dart';
+import 'package:shop_app/widgets/badge.dart';
 
 import '/widgets/products_grid.dart';
 
@@ -25,15 +28,13 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
         actions: [
           PopupMenuButton(
               onSelected: (FilterOptions selectedValue) {
-                if (selectedValue == FilterOptions.favorites) {
-                  setState(() {
+                setState(() {
+                  if (selectedValue == FilterOptions.favorites) {
                     _showOnlyFavorites = true;
-                  });
-                } else {
-                  setState(() {
+                  } else {
                     _showOnlyFavorites = false;
-                  });
-                }
+                  }
+                });
               },
               icon: const Icon(Icons.more_vert_sharp),
               itemBuilder: (_) => const [
@@ -46,6 +47,16 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                       value: FilterOptions.all,
                     ),
                   ]),
+          Consumer<Cart>(
+            builder: (_, cart, ch) => Badge(
+              child: ch!,
+              value: cart.itemCount.toString(),
+            ),
+            child: IconButton(
+              icon: const Icon(Icons.shopping_cart),
+              onPressed: () {},
+            ),
+          )
         ],
       ),
       body: ProductsGrid(showFavs: _showOnlyFavorites),
