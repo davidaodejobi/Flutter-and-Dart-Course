@@ -13,7 +13,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
-  final theme = ShopAppTheme.dark();
+  final theme = ShopAppTheme.light();
 
   @override
   Widget build(BuildContext context) {
