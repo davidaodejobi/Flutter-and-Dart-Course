@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/providers/theme.dart' as theme;
 
 import '/screens/orders_screen.dart';
 
@@ -7,12 +9,22 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final changeTheme = Provider.of<theme.Theme>((context));
     return Drawer(
       child: ListView(
         children: <Widget>[
           AppBar(
             title: const Text('Modification'),
             automaticallyImplyLeading: false,
+            actions: [
+              IconButton(
+                  icon: Icon(changeTheme.isDark!
+                      ? Icons.dark_mode_rounded
+                      : Icons.light_mode_rounded),
+                  onPressed: () {
+                    changeTheme.toggleTheme();
+                  }),
+            ],
           ),
           const SizedBox(height: 10),
           const Divider(),

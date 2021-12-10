@@ -101,4 +101,19 @@ class ShopAppTheme {
       textTheme: darkTextTheme,
     );
   }
+
+  static ThemeData getTheme(bool isDark) {
+    return isDark ? dark() : light();
+  }
+}
+
+class Theme with ChangeNotifier {
+  bool? isDark;
+
+  Theme({this.isDark});
+
+  void toggleTheme() {
+    isDark = !isDark!;
+    notifyListeners();
+  }
 }
