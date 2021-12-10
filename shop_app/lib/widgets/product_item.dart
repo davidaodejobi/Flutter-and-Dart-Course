@@ -49,6 +49,9 @@ class ProductItem extends StatelessWidget {
             onPressed: () {
               cart.addItem(product.id!, product.title!, product.price!);
               ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              // the code above overides the timer attached to the current
+              // snackbar and hides it immediately a button is pressed to
+              // avoid the user from having to wait for the timer to finish
               final snackBar = SnackBar(
                 content: const Text('Favorite Pressed'),
                 duration: const Duration(seconds: 2),
