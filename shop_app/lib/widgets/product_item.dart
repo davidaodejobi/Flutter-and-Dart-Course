@@ -48,6 +48,18 @@ class ProductItem extends StatelessWidget {
             icon: const Icon(Icons.shopping_cart),
             onPressed: () {
               cart.addItem(product.id!, product.title!, product.price!);
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              final snackBar = SnackBar(
+                content: const Text('Favorite Pressed'),
+                duration: const Duration(seconds: 2),
+                action: SnackBarAction(
+                  label: 'Undo',
+                  onPressed: () {
+                    cart.removeSingleItem(product.id!);
+                  },
+                ),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
             },
           ),
         ),

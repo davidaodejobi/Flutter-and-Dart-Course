@@ -44,6 +44,7 @@ class AppDrawer extends StatelessWidget {
                   .pushReplacementNamed(OrdersScreen.routeName);
             },
           ),
+          const Divider(),
         ],
       ),
     );
