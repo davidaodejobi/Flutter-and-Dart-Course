@@ -15,7 +15,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
-  final theme = ShopAppTheme.light();
+  final theme = ShopAppTheme.dark();
 
   @override
   Widget build(BuildContext context) {
