@@ -5,17 +5,17 @@ import '/screens/orders_screen.dart';
 import '/providers/orders.dart';
 import '/screens/cart_screen.dart';
 import '/screens/product_overview_screen.dart';
-import '/shopapp_theme.dart';
+import 'providers/theme.dart' as theme;
 import 'providers/products.dart';
 import 'screens/product_detail_screen.dart';
 import 'providers/cart.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
-  final theme = ShopAppTheme.dark();
+  final _theme = true;
 
   @override
   Widget build(BuildContext context) {
@@ -30,18 +30,33 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (ctx) => Orders(),
         ),
+        ChangeNotifierProvider(
+          create: (ctx) => theme.Theme(isDark: _theme),
+        ),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'MyShop',
-        theme: theme,
-        home: const ProductsOverviewScreen(),
-        routes: {
-          ProductDetailScreen.routeName: (ctx) => const ProductDetailScreen(),
-          CartScreen.routeName: (ctx) => const CartScreen(),
-          OrdersScreen.routeName: (ctx) => const OrdersScreen(),
-        },
-      ),
+      child: const Screens(),
+    );
+  }
+}
+
+class Screens extends StatelessWidget {
+  const Screens({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final themeBool = Provider.of<theme.Theme>(context);
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'MyShop',
+      theme: theme.ShopAppTheme.getTheme(themeBool.isDark!),
+      home: const ProductsOverviewScreen(),
+      routes: {
+        ProductDetailScreen.routeName: (ctx) => const ProductDetailScreen(),
+        CartScreen.routeName: (ctx) => const CartScreen(),
+        OrdersScreen.routeName: (ctx) => const OrdersScreen(),
+      },
     );
   }
 }
